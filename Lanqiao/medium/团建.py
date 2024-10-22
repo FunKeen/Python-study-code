@@ -1,32 +1,25 @@
 # https://www.lanqiao.cn/problems/19704/learning/?page=1&first_category_id=1
 import sys
+from collections import defaultdict
 
 data = sys.stdin.read().splitlines()
 n, m = map(int, data[0].split())
 c = [0] + list(map(int, data[1].split()))
 d = [0] + list(map(int, data[2].split()))
-dict_c = {0: [1]}
-dict_d = {0: [1]}
+
+dict_c = defaultdict(list)
+dict_d = defaultdict(list)
+dict_c[0].append(1)
+dict_d[0].append(1)
+
 for i in range(3, n + 2):
-    road = list(map(int, data[i].split()))
-    if road[0] in dict_c:
-        dict_c[road[0]].append(road[1])
-    else:
-        dict_c[road[0]] = [road[1]]
-    if road[1] in dict_c:
-        dict_c[road[1]].append(road[0])
-    else:
-        dict_c[road[1]] = [road[0]]
+    a, b = map(int, data[i].split())
+    dict_c[a].append(b)
+    dict_c[b].append(a)
 for i in range(n + 2, n + m + 1):
-    road = list(map(int, data[i].split()))
-    if road[0] in dict_d:
-        dict_d[road[0]].append(road[1])
-    else:
-        dict_d[road[0]] = [road[1]]
-    if road[1] in dict_d:
-        dict_d[road[1]].append(road[0])
-    else:
-        dict_d[road[1]] = [road[0]]
+    a, b = map(int, data[i].split())
+    dict_d[a].append(b)
+    dict_d[b].append(a)
 
 viewc = set()
 viewd = set()
