@@ -42,7 +42,7 @@ mem = {1: 1, 2: 2}
 
 n = int(input())
 max_ = 1
-for i in range(1, 10 ** 6):
+for i in range(1, n):
     temp = i
     max_ = max(temp, max_)
     while temp != 1:
@@ -55,5 +55,4 @@ for i in range(1, 10 ** 6):
         if temp > max_:
             mem[i] = temp
             max_ = temp
-print(mem)
 print(max_)
