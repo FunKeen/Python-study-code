@@ -22,12 +22,13 @@ class UnionFind(object):
                 self.parent[y] = x
             else:
                 self.parent[x] = y
+                self.rank[y] += 1
 
 
 # kruskal算法，每次根据最小权值添加一条边，添加完后再检查节点1与节点n是否连接，如果连接的话，直接返回新添加边的权值，该值即为结果
 def kruskal(n, edges):
     uf = UnionFind(n)
-    mts=[]
+    mts = []
     for u, v, val in edges:
         if uf.find(u) != uf.find(v):
             uf.union(u, v)

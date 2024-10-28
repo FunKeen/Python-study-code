@@ -24,7 +24,7 @@ def erfa(x):
 
 def erfc(x):
     l, r = 0, n
-    while r - l >= 1:
+    while r > l:
         mid = (l + r) // 2
         if c[mid] <= x:
             l = mid + 1
